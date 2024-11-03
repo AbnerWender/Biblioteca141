@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="../css/form.css">
+
 <div class="box-cad-livro">
 
     <h3>Cadastrar Livro</h3>
@@ -20,7 +22,7 @@
     </form>
 
 </div>
-
+<!-- 
 <div class="box-cad-usuario">
 
     <h3>Cadastrar Usuário</h3>
@@ -41,4 +43,4 @@
         <input type="submit" value="Cadastrar Usuário">
     </form>
 
-</div>
+</div> -->
