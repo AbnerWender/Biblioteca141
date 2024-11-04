@@ -17,7 +17,7 @@ class LivroController{
         if($livro->create()){
             header('Location: index.php');
         } else{
-            echo "Erro ao cadastrar livro";
+            echo "Erro ao cadastrar livro!";
         }
     }
 
@@ -28,7 +28,7 @@ class LivroController{
         if($livro->read()){
             header('Location: index.php');
         } else{
-            echo "Erro ao ler livro";
+            echo "Erro ao ler livro!";
         }
     }
 
@@ -39,7 +39,7 @@ class LivroController{
         if($livro->update()){
             header('Location: index.php');
         } else{
-            echo "Erro ao atualizar livro";
+            echo "Erro ao atualizar livro!";
         }
     }
 
@@ -50,7 +50,7 @@ class LivroController{
         if($livro->delete()){
             header('Location: index.php');
         } else{
-            echo "Erro ao deletar livro";
+            echo "Erro ao deletar livro!";
         }
     }
 }
