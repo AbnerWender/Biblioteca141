@@ -16,7 +16,7 @@ class UsuarioController{
         if($usuario->create()){
             header('Location: index.php');
         } else{
-            echo "Erro ao cadastrar usuario";
+            echo "Erro ao cadastrar usuario!";
         }
     }
 
@@ -27,7 +27,7 @@ class UsuarioController{
         if($usuario->read()){
             header('Location: index.php');
         } else{
-            echo "Erro ao ler usuario";
+            echo "Erro ao ler usuario!";
         }
     }
 
@@ -38,7 +38,7 @@ class UsuarioController{
         if($usuario->update()){
             header('Location: index.php');
         } else{
-            echo "Erro ao atualizar usuario";
+            echo "Erro ao atualizar usuario!";
         }
     }
 
@@ -49,7 +49,7 @@ class UsuarioController{
         if($usuario->delete()){
             header('Location: index.php');
         } else{
-            echo "Erro ao deletar usuario";
+            echo "Erro ao deletar usuario!";
         }
     }
 }
