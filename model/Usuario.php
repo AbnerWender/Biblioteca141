@@ -1,5 +1,5 @@
 <?php
-require_once "./config/database.php";
+require_once "../config/database.php";
 
 class Usuario implements Crud{
     private $conexao;
@@ -9,6 +9,7 @@ class Usuario implements Crud{
     public $email;
     public $senha;
     public $cpf;
+    public $livrosEmprestados = [];
     const maxEmprestimo = 3;
     
     public function __construct($db){
