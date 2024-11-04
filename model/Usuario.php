@@ -8,26 +8,40 @@ class Usuario implements Crud{
     public $nome;
     public $email;
     public $senha;
-    public $dataNasc;
+    public $cpf;
+    const maxEmprestimo = 3;
     
     public function __construct($db){
         $this->conexao = $db;
     }
 
+    public function getIdUsuario($id_usuario){
+        $query = "SELECT * FROM {$this->tabela} WHERE id = {$this->id_usuario}";
+        $resultado = $this->conexao->query($query);
+        return $resultado->fetch_all(MYSQLI_ASSOC);
+    }
+
     public function create(){
-        $query =  "insert into usuario(nome, email, senha, dataNasc) values(".$this->nome.",".$this->email.",".$this->email.",".$this->senha.",".$this->dataNasc.");";
+        $query = "INSERT INTO {$this->tabela} (nome, email, senha, cpf) VALUES ('{$this->nome}', '{$this->email}', '{$this->senha}', '{$this->cpf}');";
         $resultado = $this->conexao->query($query);
         return $resultado;
     }
 
-    public function read(){
-        $query = "select * from usuario where nome = ".$this->id_usuario.";";
-        $resultado = $this->conexao->query($query);
-        return $resultado;
-    }
+    public function read($coluna, $valor){}
 
     public function update($valores){
-        $query = "update usuario set ";
+        $verificaSeExiste = "SELECT COUNT(*) FROM {$this->tabela} WHERE id = '{$this->id_usuario}';";
+        $resultadoVerificacao = $this->conexao->query($verificaSeExiste);
+    
+        if ($resultadoVerificacao && $resultadoVerificacao->fetchColumn() === 0) {
+            return "Usuário não encontrado";
+        }
+
+        if(in_array("cpf", $valores)){
+            unset($valores['cpf']);
+        };
+
+        $query = "UPDATE {$this->tabela} SET ";
         $colunasArray = array_keys($valores);
 
         for($contador = 0; $contador < count($valores); $contador ++){
@@ -37,13 +51,17 @@ class Usuario implements Crud{
             $query .= $contador != (count($valores)-1) ? $coluna . '= "'. $valor .'", ': $coluna . '= "'. $valor .'" ';
         }
 
-        $query += 'where id_usuario = "'.$this->id_usuario.'";';
+        $query += "WHERE id_usuario = {$this->id_usuario};";
         $resultado = $this->conexao->query($query);
         return $resultado;
     }
 
     public function delete(){
-        $query =  "delete from usuario where id_usuario = ".$this->id_usuario.";";
+        if(self::maxEmprestimo > 0){
+            return "Não foi possivel deletar usuário\nUsuário com emprestimo ativo";
+        };
+
+        $query = "DELETE FROM {$this->tabela} WHERE id_livro = {$this->id_usuario};";
         $resultado = $this->conexao->query($query);
         return $resultado;
     }
