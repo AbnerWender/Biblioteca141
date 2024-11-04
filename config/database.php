@@ -2,13 +2,13 @@
 
 class Banco{
     const host = 'localhost';
-    const banco_de_dados = 'biblioteca141';
+    const banco_de_dados = 'Biblioteca141';
     const usuario = 'root';
     const senha = '';
     public $conexao;
 
     public function conectar(){
-        $this->conexao = new mysqli(self::host, self::banco_de_dados, self::usuario, self::senha);
+        $this->conexao = new mysqli(self::host, self::usuario, self::senha, self::banco_de_dados);
         if(!$this->conexao){
             echo "erro na conexao";
         } else{

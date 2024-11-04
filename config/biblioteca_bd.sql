@@ -6,7 +6,7 @@ create table usuario(
     nome varchar(150),
     email varchar(100),
     senha varchar(40),
-    dataNasc date    
+    cpf varchar(11)
 );
 
 create table livro(
@@ -14,15 +14,19 @@ create table livro(
 	titulo varchar(100),
     autor varchar(100),
     descricao varchar(300),
+    isbn varchar(13),
     genero varchar(100)
+    estaDisponivel Boolean
 );
 
-create table emprestimo(
+create table  emprestimo(
 	id int primary key auto_increment,
-    id_usuario int,
-    id_livro int,
+    idUsuario int,
+    idLivro int,
     dataEmprestimo date,
     dataDevolucao date,
-    foreign key (id_usuario) references usuario(id),
-    foreign key (id_livro) references livro(id)
+    foreign key (idUsuario) references usuario(id),
+    foreign key (idLivro) references livro(id)
 );
+
+-- FALTA ADICIONAR O STATUS DO LIVRO
