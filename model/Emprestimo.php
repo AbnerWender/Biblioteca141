@@ -1,5 +1,5 @@
 <?php
-require_once "./config/database.php";
+require_once "../config/database.php";
 require 'Livro.php';
 require 'Usuario.php';
 
@@ -21,18 +21,7 @@ class Emprestimo{
         return $resultado->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function create($usuario, $livro){
-        if(self::maxEmprestimo >= 3 and $estaDisponivel == false){
-            return "Não foi Possivel realizar emprestimo";
-        };
-        $query = "INSERT INTO {$this->tabela} (id_usuario, id_livro, dataEmprestimo, dataDevolucao) VALUES ('{$this->id_usuario}', '{$this->id_livro}', '{$this->dataEmprestimo}', '{$this->dataDevolucao}');";
-        $resultado = $this->conexao->query($query);
-        return $resultado;
-    }
+    public function realizarEmprestimo($usuario, $livro){}
 
-    public function read(){
-        $query = "SELECT * FROM {$this->tabela} WHERE id_emprestimo = {$this->id_emprestimo};";
-        $resultado = $this->conexao->query($query);
-        return $resultado;
-    }
+    public function devolverEmprestimo(){}
 }

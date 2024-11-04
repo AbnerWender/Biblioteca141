@@ -1,5 +1,5 @@
 <?php
-require_once "./config/database.php";
+require_once "../config/database.php";
 
 class Livro implements Crud{
     private $conexao;
@@ -20,6 +20,10 @@ class Livro implements Crud{
         $query = "SELECT * FROM {$this->tabela} WHERE id = {$this->id_livro}";
         $resultado = $this->conexao->query($query);
         return $resultado->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function emprestar(){
+        
     }
 
     public function create(){
