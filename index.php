@@ -7,7 +7,7 @@ $acao = isset($_GET['acao']) ? $_GET['acao'] : '';
 switch($acao){
     case 'cadastrarLivro':
         $LivroController = new LivroController();
-        $LivroController->cadastrarLivro($_POST['titulo'], $_POST['autor'], $_POST['genero']);
+        $LivroController->cadastrarLivro($_POST['titulo'], $_POST['autor'], $_POST['genero'], $_POST['isbn'], $_POST['estaDisponivel']);
         break;
     default:
         include 'view/formCadastrarLivro.php';

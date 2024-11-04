@@ -1,11 +1,11 @@
 <?php
-require "./config/database.php";
-require "./model/Livro.php";
+require "../config/database.php";
+require "../model/Livro.php";
 
 class LivroController{
     public $livro;
 
-    public function cadastrarLivro($titulo, $autor, $genero){
+    public function cadastrarLivro($titulo, $autor, $genero, $isbn, $estaDisponivel){
         $database = new Banco();
         $bd = $database->conectar();
 
@@ -13,11 +13,13 @@ class LivroController{
         $this->livro = $titulo;
         $this->livro = $autor;
         $this->livro = $genero;
+        $this->livro = $isbn;
+        $this->livro = $estaDisponivel;
 
-        if($livro->create()){
+        if($this->livro->create()){
             header('Location: index.php');
         } else{
-            echo "Erro ao cadastrar livro!";
+            echo "<script>alert(Erro ao cadastrar livro!)</script>";
         }
     }
 
@@ -39,7 +41,7 @@ class LivroController{
         if($livro->update()){
             header('Location: index.php');
         } else{
-            echo "Erro ao atualizar livro!";
+            echo "<script>alert(Erro ao atualizar livro!)</script>";
         }
     }
 
@@ -54,3 +56,8 @@ class LivroController{
         }
     }
 }
+$livro = new LivroController();
+
+$livro->cadastrarLivro("Dom Casmurro", "Henrique Verao", "Comedia", "111111111111", True);
+
+var_dump($livro);
