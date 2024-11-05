@@ -7,7 +7,7 @@ class EmprestimoController{
         $database = new Banco();
         $bd = $database->conectar();
 
-        if($emprestimo->update()){
+        if($this->emprestimo->emprestar()){
             header('Location: index.php');
         } else{
             echo "Erro ao emprestar livro!";
@@ -18,7 +18,7 @@ class EmprestimoController{
         $database = new Banco();
         $bd = $database->conectar();
 
-        if($emprestimo->update()){
+        if($this->emprestimo->devolucao()){
             header('Location: index.php');
         } else{
             echo "Erro ao devolver livro!";
