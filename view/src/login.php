@@ -1,12 +1,14 @@
-<link rel="stylesheet" href="../css/loginUsuario.css">
+    <link rel="stylesheet" href="../css/loginUsuario.css">
 
 <section class="login-screen">
 
-    <h2>Login</h2>
-
+    
     <form action="index.php?acao=loginUsuario" id="form-login">
-        <label for="email">Email</label>
-        <input type="text" id="email">
+        <h2>Login</h2>
+        <div class="row">
+            <label for="email">Email</label>
+            <input type="text" id="email">
+        </div>
 
         <label for="password">Senha</label>
         <input type="text" id="password">
