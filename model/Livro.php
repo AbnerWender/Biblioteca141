@@ -10,6 +10,7 @@ class Livro implements Crud{
     public $autor;
     public $isbn;
     public $genero;
+    public $usuario;
     public $estaDisponivel = true;
 
     public function __construct($db){
@@ -22,8 +23,21 @@ class Livro implements Crud{
         return $resultado->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function emprestar(){
-        
+    public function emprestar($usuario){
+        if($this->estaDisponivel == false){
+            return 'Livro já está emprestado';
+        }
+        $this->usuario = $usuario;
+        $this->estaDisponivel = false;
+    }
+
+    public function devolver(){
+        if($this->estaDisponivel == true){
+            echo 'Livro não está emprestado';
+            return;
+        }
+        $this->usuario = null;
+        $this->estaDisponivel = true;
     }
 
     public function create(){

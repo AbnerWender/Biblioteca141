@@ -22,6 +22,22 @@ class Usuario implements Crud{
         return $resultado->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function emprestar($livro){
+        if(count($this->livrosEmprestados) >= self::maxEmprestimo){
+            return "Limite máximo de empréstimo atingido";
+        }
+        array_push($this->livrosEmprestados, $livro);
+    }
+
+    public function devolver($livro){
+        if(in_array($livro, $this->livrosEmprestados)){
+            $posicao = array_search($livro, $this->livrosEmprestados);
+            unset($this->livros_emprestados[$posicao]);
+        }else{
+            return "Livro não encontrado";
+        }
+    }
+
     public function create(){
         $query = "INSERT INTO {$this->tabela} (nome, email, senha, cpf) VALUES ('{$this->nome}', '{$this->email}', '{$this->senha}', '{$this->cpf}');";
         $resultado = $this->conexao->query($query);
