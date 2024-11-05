@@ -1,5 +1,5 @@
 <?php
-require_once "./config/database.php";
+require_once "../config/database.php";
 
 class Usuario implements Crud{
     private $conexao;
@@ -9,6 +9,7 @@ class Usuario implements Crud{
     public $email;
     public $senha;
     public $cpf;
+    public $livrosEmprestados = [];
     const maxEmprestimo = 3;
     
     public function __construct($db){
@@ -19,6 +20,22 @@ class Usuario implements Crud{
         $query = "SELECT * FROM {$this->tabela} WHERE id = {$this->id_usuario}";
         $resultado = $this->conexao->query($query);
         return $resultado->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function emprestar($livro){
+        if(count($this->livrosEmprestados) >= self::maxEmprestimo){
+            return "Limite máximo de empréstimo atingido";
+        }
+        array_push($this->livrosEmprestados, $livro);
+    }
+
+    public function devolver($livro){
+        if(in_array($livro, $this->livrosEmprestados)){
+            $posicao = array_search($livro, $this->livrosEmprestados);
+            unset($this->livros_emprestados[$posicao]);
+        }else{
+            return "Livro não encontrado";
+        }
     }
 
     public function create(){
