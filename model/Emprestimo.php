@@ -3,7 +3,7 @@ require_once "../config/database.php";
 require 'Livro.php';
 require 'Usuario.php';
 
-class Emprestimo{
+class Emprestimo {
     private $conexao;
     private $tabela = 'emprestimo';
     public $id_emprestimo;
@@ -21,14 +21,12 @@ class Emprestimo{
         return $resultado->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function create($usuario, $livro){
-
-
-    }
+    public function create($usuario, $livro){}
 
     public function update(){}
 
-    public function read(){
+    public function read(){}
 
-    }
+    public function delete(){}
+
 }
