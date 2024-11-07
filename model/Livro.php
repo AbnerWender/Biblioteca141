@@ -1,5 +1,6 @@
 <?php
 require_once "../config/database.php";
+require "Crud.php";
 
 class Livro implements Crud{
     private $conexao;
@@ -23,29 +24,29 @@ class Livro implements Crud{
         return $resultado->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function emprestar($usuario){
-        if($this->estaDisponivel == false){
-            return 'Livro já está emprestado';
-        }
-        $this->usuario = $usuario;
-        $this->estaDisponivel = false;
-    }
+    // public function emprestar($usuario){
+    //     if($this->estaDisponivel == false){
+    //         return '<script>alert("Livro já está emprestado")</script>';
+    //     }
+    //     $this->usuario = $usuario;
+    //     $this->estaDisponivel = false;
+    // }
 
-    public function devolver(){
-        if($this->estaDisponivel == true){
-            echo 'Livro não está emprestado';
-            return;
-        }
-        $this->usuario = null;
-        $this->estaDisponivel = true;
-    }
+    // public function devolver(){
+    //     if($this->estaDisponivel == true){
+    //         echo 'Livro não está emprestado';
+    //         return;
+    //     }
+    //     $this->usuario = null;
+    //     $this->estaDisponivel = true;
+    // }
 
     public function create(){
         $verificarIsbn = "SELECT COUNT(*) FROM {$this->tabela} WHERE isbn = '{$this->isbn}';";
         $resultadoVerificacao = $this->conexao->query($verificarIsbn);
 
         if ($resultadoVerificacao && $resultadoVerificacao->fetchColumn() > 0) {
-            return "Livro já cadastrado";
+            return "<script>alert('Livro já cadastrado')</script>";
         }
 
         $query = "INSERT INTO {$this->tabela} (titulo, autor, genero) VALUES ('{$this->titulo}', '{$this->autor}', '{$this->genero}');";
@@ -64,7 +65,7 @@ class Livro implements Crud{
         $resultadoVerificacao = $this->conexao->query($verificaSeExiste);
     
         if ($resultadoVerificacao && $resultadoVerificacao->fetchColumn() === 0) {
-            return "Livro não encontrado";
+            return "<script>alert('Livro não encontrado')</script>";
         }
 
         if(in_array("isbn", $valores)){
@@ -87,8 +88,8 @@ class Livro implements Crud{
     }
 
     public function delete(){
-        if($this->estaDisponivel == false){
-            return "Não é possivel deletar livro emprestado.";
+        if(!$this->estaDisponivel){
+            return "<script>alert('Não é possivel deletar livro emprestado')</script>";
         };
 
         $query = "DELETE FROM {$this->tabela} WHERE id_livro = {$this->id_livro};";
