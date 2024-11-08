@@ -1,6 +1,6 @@
 <?php
-require "./config/database.php";
-require "./model/Usuario.php";
+require "../config/database.php";
+require "../model/Usuario.php";
 
 class UsuarioController{
     public $usuario;
@@ -13,7 +13,7 @@ class UsuarioController{
         $this->usuario = $nome;
         $this->usuario = $email;
 
-        if($usuario->create()){
+        if($this->usuario->create()){
             header('Location: index.php');
         } else{
             echo "Erro ao cadastrar usuario!";
