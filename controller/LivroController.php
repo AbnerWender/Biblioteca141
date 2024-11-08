@@ -1,15 +1,19 @@
 <?php
-require "../config/database.php";
-require "../model/Livro.php";
+require __DIR__ . '/../config/database.php';
+require __DIR__ . '/../model/livro.php';
 
 class LivroController{
     public $livro;
+    public $database;
+
+    public function conectarBd(){
+        $this->database = new Banco();
+        return $this->database->conectar();
+    }
 
     public function cadastrarLivro($titulo, $autor, $genero, $isbn, $estaDisponivel){
-        $database = new Banco();
-        $bd = $database->conectar();
+        $livro = new Livro($this->conectarBd());
 
-        $this->livro = new Livro($bd);
         $this->livro = $titulo;
         $this->livro = $autor;
         $this->livro = $genero;
@@ -23,41 +27,36 @@ class LivroController{
         }
     }
 
-    public function lerLivro($livro){
-        $database = new Banco();
-        $bd = $database->conectar();
+    public function buscarLivro($livro){
+        $livro = new Livro($this->conectarBd());
+        $livro->id_livro = $id_livro;
 
         if($livro->read()){
             header('Location: index.php');
         } else{
-            echo "Erro ao ler livro!";
+            echo "<script>alert(Livro não encontrado!)</script>";
         }
     }
 
     public function atualizarLivro($livro){
-        $database = new Banco();
-        $bd = $database->conectar();
+        $livro = new Livro($this->conectarBd());
+        $livro->id_livro = $id_livro;
 
-        if($livro->update()){
-            header('Location: index.php');
+        if($livro->read()){
+            $livro->update();
         } else{
             echo "<script>alert(Erro ao atualizar livro!)</script>";
         }
     }
 
     public function deletarLivro($livro){
-        $database = new Banco();
-        $bd = $database->conectar();
+        $livro = new Livro($this->conectarBd());
+        $livro->id_livro = $id_livro;
 
-        if($livro->delete()){
-            header('Location: index.php');
+        if($livro->read()){
+            $livro->delete();
         } else{
-            echo "Erro ao deletar livro!";
+            echo "<script>alert(Erro ao deletar livro!)</script>";
         }
     }
 }
-$livro = new LivroController();
-
-$livro->cadastrarLivro("Dom Casmurro", "Henrique Verao", "Comedia", "111111111111", True);
-
-var_dump($livro);
