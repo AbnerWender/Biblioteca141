@@ -1,5 +1,29 @@
 @import url("../src/header.php");
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+
+    font-family: "Inter", serif;
+    font-optical-sizing: auto;
+    /* font-weight: weight; */
+    font-style: normal;
+}
+
+body{
+    background-image: url('../imagens/bibliotecaWpp.jpg');
+    background-size: cover; 
+}
+section {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-content: center;
+}
 
 @import url("../src/footer.php");
