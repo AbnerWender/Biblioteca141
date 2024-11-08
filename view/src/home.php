@@ -2,7 +2,7 @@
     include ("../css/header.php");
 ?>
 
-
+<!-- Pagina principal -->
 
 
 <?php

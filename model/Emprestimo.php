@@ -20,17 +20,3 @@ class Emprestimo {
         $resultado = $this->conexao->query($query);
         return $resultado->fetch_all(MYSQLI_ASSOC);
     }
-
-    public function emprestar($usuario, $livro){
-        $query = "INSERT INTO {$this->tabela} (id_usuario, id_livro, ativo) VALUES ('{$usuario->id_usuario}', '{$livro->id_livro}', '{$this->ativo}');";
-        $resultado = $this->conexao->query($query);
-        return $resultado;
-    }
-
-    public function devolver(){
-        $query = "UPDATE {$this->tabela} SET ativo = false;";
-        $resultado = $this->conexao->query($query);
-        return $resultado;
-    }
-
-}

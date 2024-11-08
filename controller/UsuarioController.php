@@ -1,55 +1,59 @@
 <?php
-require "./config/database.php";
-require "./model/Usuario.php";
+require "../config/database.php";
+require "../model/Usuario.php";
 
 class UsuarioController{
     public $usuario;
+    public $database;
+
+    public function conectarBd(){
+        $this->database = new Banco();
+        return $this->database->conectar();
+    }
 
     public function cadastrarUsuario($nome, $email){
-        $database = new Banco();
-        $bd = $database->conectar();
+        $usuario = new Usuario($this->conectarBd());
 
-        $this->usuario = new Usuario($bd);
         $this->usuario = $nome;
         $this->usuario = $email;
 
-        if($usuario->create()){
-            header('Location: index.php');
+        if($this->usuario->create()){
+            header('Location: home.php');
         } else{
-            echo "Erro ao cadastrar usuario";
+            echo "<script>alert(Erro ao cadastrar usuário!)</script>";
         }
     }
 
     public function lerUsuario($usuario){
-        $database = new Banco();
-        $bd = $database->conectar();
+        $usuario = new Usuario($this->conectarBd());
+        $usuario->id_usuario = $id_usuario;
 
         if($usuario->read()){
             header('Location: index.php');
         } else{
-            echo "Erro ao ler usuario";
+            echo "<script>alert(Usuário não encontrado!)</script>";
         }
     }
 
     public function atualizarUsuario($usuario){
-        $database = new Banco();
-        $bd = $database->conectar();
+        $usuario = new Usuario($this->conectarBd());
+        $usuario->id_usuario = $id_usuario;
 
-        if($usuario->update()){
-            header('Location: index.php');
+        if($usuario->read()){
+            $usuario->update();
         } else{
-            echo "Erro ao atualizar usuario";
+            echo "<script>alert(Erro ao atualizar usuário!)</script>";
         }
     }
 
     public function deletarUsuario($usuario){
-        $database = new Banco();
-        $bd = $database->conectar();
+        $usuario = new Usuario($this->conectarBd());
+        $usuario->id_usuario = $id_usuario;
 
-        if($usuario->delete()){
-            header('Location: index.php');
+        if($usuario->read()){
+            $usuario->delete();
         } else{
-            echo "Erro ao deletar usuario";
+            echo "<script>alert(Erro ao deletar usuário!)</script>";
         }
     }
 }
