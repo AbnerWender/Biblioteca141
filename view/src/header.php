@@ -91,6 +91,10 @@
                 width: 100%;
             }
         }
+
+        header #biblioteca-nome { color: white; }
+        header nav ul li a { color: white; }
+        
     </style>
     <header id="header">
 
