@@ -1,24 +1,52 @@
 <!-- Page Cadastro Usuario -->
+<?php 
+include('../src/header.php');
+?>
 
+<link rel="stylesheet" href="../css/cadastroUsuario.css">
  
-<div class="box-cad-usuario">
+<section class="box-cad-usuario">
 
-    <h3>Cadastrar Usuário</h3>
+    <form action="index.php?acao=cadastrarUsuario" method="post" id="form-cadastro">
+        <h1>Cadastrar Usuário</h1>
 
-    <form action="index.php?acao=cadastrarUsuario" method="get">
-        <label for="titulo">Nome Completo: </label>
-        <input type="text" name="usuario" id="usuario">
+        <div class="row-75">
+            <div>
+                <input type="text" name="usuario" id="usuario" placeholder="Nome Completo *">
+            </div>
 
-        <label for="email">Email: </label>
-        <input type="email" name="email" id="email">
+            <div>
+                <input type="number" name="cpf" id="cpf" placeholder="CPF *">
+            </div>
+        </div>
 
-        <label for="senha">Senha: </label>
-        <input type="password" name="senha" id="senha">
+        <div class="row-75">
+            <div>
+                <input type="email" id="email" name="email" placeholder="Email *">
+            </div>
 
-        <label for="dataNasc">CPF: </label>
-        <input type="number" name="cpf" id="cpf">
+            <div>
+                <input type="date" id="dtNasc" name="dtNasc" placeholder="Data de Nasc *">
+            </div>
+        </div>
 
-        <input type="submit" value="Cadastrar">
+        <div class="row-50">
+            <div>
+                <input type="password" name="senha" id="senha" placeholder="Senha *">
+            </div>
+            
+            <div>
+                <input type="password" name="senha" id="senha" placeholder="Confirmar Senha *">
+            </div>
+        </div>
+
+        <div id="btn-cadastrar">
+            <button href="#" id="btn-cadastrar" type="submit">
+                <p>Cadastrar</p>
+            </button>
+        </div>
+        <p id="faca-login">Já possui cadastro? <a href="#" id="btn-register">Faça Login</a></p>
+
     </form>
 
-</div>
+</section>
