@@ -48,6 +48,7 @@
             height: 100px;
             align-items: center;
             gap: 30%;
+            background-color: black;
         }
 
         .nav-list {
@@ -94,7 +95,7 @@
 
         header #biblioteca-nome { color: white; }
         header nav ul li a { color: white; }
-        
+
     </style>
     <header id="header">
 
