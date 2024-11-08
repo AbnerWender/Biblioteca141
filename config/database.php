@@ -2,7 +2,7 @@
 
 class Banco{
     const host = 'localhost';
-    const banco_de_dados = 'Biblioteca141';
+    const banco_de_dados = 'Biblioteca';
     const usuario = 'root';
     const senha = '';
     public $conexao;
