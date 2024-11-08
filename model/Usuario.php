@@ -45,7 +45,11 @@ class Usuario implements Crud{
         return $resultado;
     }
 
-    public function read($coluna, $valor){}
+    public function read($coluna, $valor){
+        $query = "SELECT * FROM {$this->tabela} WHERE {$coluna} = {$valor};";
+        $resultado = $this->conexao->query($query);
+        return $resultado;
+    }
 
     public function update($valores){
         $verificaSeExiste = "SELECT COUNT(*) FROM {$this->tabela} WHERE id = '{$this->id_usuario}';";
