@@ -20,13 +20,3 @@ class Emprestimo {
         $resultado = $this->conexao->query($query);
         return $resultado->fetch_all(MYSQLI_ASSOC);
     }
-
-    public function create($usuario, $livro){}
-
-    public function update(){}
-
-    public function read(){}
-
-    public function delete(){}
-
-}
