@@ -71,7 +71,7 @@
             left: 0;
             height: 2px;
             width: 0;
-            background-color: black;
+            background-color: white;
             transition: ease-in 3ms;
         }
 
@@ -100,7 +100,7 @@
     <header id="header">
 
         <div id="biblioteca-nome">
-            <p>Daggi</p>
+            <p>Biblioteca</p>
         </div>
 
         <nav id="nav-header">
