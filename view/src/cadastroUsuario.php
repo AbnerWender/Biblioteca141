@@ -36,7 +36,7 @@ include('../src/header.php');
             </div>
             
             <div>
-                <input type="password" name="senha" id="senha" placeholder="Confirmar Senha *">
+                <input type="password" name="senha" id="confirma-senha" placeholder="Confirmar Senha *">
             </div>
         </div>
 
@@ -45,7 +45,7 @@ include('../src/header.php');
                 <p>Cadastrar</p>
             </button>
         </div>
-        <p id="faca-login">Já possui cadastro? <a href="#" id="btn-register">Faça Login</a></p>
+        <p id="faca-login">Já possui cadastro? <a href="../src/login.php" id="btn-register">Faça Login</a></p>
 
     </form>
 
