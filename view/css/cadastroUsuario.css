@@ -1,4 +1,4 @@
-@import url(style.css);
+ @import url(style.css);
 
 .box-cad-usuario{
     display: flex;
@@ -32,6 +32,30 @@
 input::placeholder{
     color: aliceblue;
     font-size: small;
+}
+
+#usuario:focus{
+    border-color: #361211;
+}
+
+#cpf:focus{
+    border-color: #361211;
+}
+
+#email:focus{
+    border-color: #361211;
+}
+
+#dtNasc:focus{
+    border-color: #361211;
+}
+
+#senha:focus{
+    border-color: #361211;
+}
+
+#confirma-senha:focus{
+    border-color: #361211;
 }
 
 #form-cadastro h1{
@@ -78,10 +102,11 @@ input::placeholder{
     display: flex;
     align-items: center;
     justify-content: center;
+    padding-top: 20px;
 }
 
 #btn-cadastrar button{
-    width: 90px;
+    width: 120px;
     background-color: #1d0000;
     color: aliceblue;
     border-radius: 3px;
@@ -90,7 +115,7 @@ input::placeholder{
 }
 
 #btn-cadastrar p{
-    font-size: 15px;
+    font-size: 20px;
 }
 
 #btn-cadastrar button:hover{
@@ -98,7 +123,6 @@ input::placeholder{
 }
 #faca-login{
     font-size: small;
-    margin-top: 10px;
     padding-bottom: 10px;
     display: flex;
     align-items: center;
