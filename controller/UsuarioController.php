@@ -11,7 +11,7 @@ class UsuarioController{
         return $this->database->conectar();
     }
 
-    public function cadastrarUsuario($nome, $email){
+    public function cadastrar($nome, $email){
         $usuario = new Usuario($this->conectarBd());
 
         $this->usuario = $nome;
@@ -24,7 +24,7 @@ class UsuarioController{
         }
     }
 
-    public function lerUsuario($usuario){
+    public function buscar($usuario){
         $usuario = new Usuario($this->conectarBd());
         $usuario->id_usuario = $id_usuario;
 
@@ -35,25 +35,34 @@ class UsuarioController{
         }
     }
 
-    public function atualizarUsuario($usuario){
+    public function atualizar($usuario){
         $usuario = new Usuario($this->conectarBd());
         $usuario->id_usuario = $id_usuario;
 
-        if($usuario->read()){
-            $usuario->update();
-        } else{
-            echo "<script>alert(Erro ao atualizar usuário!)</script>";
+        if ($usuario->read('id_usuario', $id_usuario)) {
+            $valores = [
+                'nome' => $_POST['nome'],
+                'email' => $_POST['email'],
+                'senha' => $_POST['senha'],
+                'cpf' => $_POST['cpf']
+            ];
+            
+            $usuario->update($valores);
+            header('Location: index.php');
+        } else {
+            echo "<script>alert('Usuario não encontrado!')</script>";
         }
     }
 
-    public function deletarUsuario($usuario){
+    public function deletar($usuario){
         $usuario = new Usuario($this->conectarBd());
         $usuario->id_usuario = $id_usuario;
 
-        if($usuario->read()){
+        if ($usuario->read('id_usuario', $id_usuario)) {
             $usuario->delete();
-        } else{
-            echo "<script>alert(Erro ao deletar usuário!)</script>";
+            header('Location: index.php');
+        } else {
+            echo "<script>alert('Usuario não encontrado!')</script>";
         }
     }
 }
