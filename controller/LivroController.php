@@ -1,6 +1,6 @@
 <?php
-require __DIR__ . '/../config/database.php';
-require __DIR__ . '/../model/livro.php';
+require "../config/database.php";
+require "../model/livro.php";
 
 class LivroController{
     public $livro;
@@ -11,7 +11,7 @@ class LivroController{
         return $this->database->conectar();
     }
 
-    public function cadastrarLivro($titulo, $autor, $genero, $isbn, $estaDisponivel){
+    public function cadastrar($titulo, $autor, $genero, $isbn, $estaDisponivel){
         $livro = new Livro($this->conectarBd());
 
         $this->livro = $titulo;
@@ -27,7 +27,7 @@ class LivroController{
         }
     }
 
-    public function buscarLivro($livro){
+    public function buscar($livro){
         $livro = new Livro($this->conectarBd());
         $livro->id_livro = $id_livro;
 
@@ -38,25 +38,35 @@ class LivroController{
         }
     }
 
-    public function atualizarLivro($livro){
+    public function atualizar($livro){
         $livro = new Livro($this->conectarBd());
         $livro->id_livro = $id_livro;
 
-        if($livro->read()){
-            $livro->update();
-        } else{
-            echo "<script>alert(Erro ao atualizar livro!)</script>";
+        if ($livro->read('id_livro', $id_livro)) {
+            $valores = [
+                'titulo' => $_POST['titulo'],
+                'autor' => $_POST['autor'],
+                'genero' => $_POST['genero'],
+                'isbn' => $_POST['isbn'],
+                'estaDisponivel' => $_POST['estaDisponivel']
+            ];
+            
+            $livro->update($valores);
+            header('Location: index.php');
+        } else {
+            echo "<script>alert('Livro não encontrado!')</script>";
         }
     }
 
-    public function deletarLivro($livro){
+    public function deletar($livro){
         $livro = new Livro($this->conectarBd());
         $livro->id_livro = $id_livro;
 
-        if($livro->read()){
+        if ($livro->read('id_livro', $id_livro)) {
             $livro->delete();
-        } else{
-            echo "<script>alert(Erro ao deletar livro!)</script>";
+            header('Location: index.php');
+        } else {
+            echo "<script>alert('Livro não encontrado!')</script>";
         }
     }
 }

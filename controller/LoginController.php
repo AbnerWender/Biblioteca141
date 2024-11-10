@@ -1,6 +1,5 @@
 <?php
 require_once "../config/database.php";
-require "../model/Usuario.php";
 
 class LoginController{
     private $conexao;
@@ -13,12 +12,15 @@ class LoginController{
         }
     }
 
+    // Valida o login e manda pra home :)
     public function login($email, $senha) {
+        // se tiver login vai pra home.php
         if (isset($_SESSION['usuario_email'])) {
             header("Location: /home.php");
             exit();
         }
 
+        // fazendo a busca no banco de dados
         $consulta = "SELECT * FROM usuario WHERE email = ? LIMIT 1";
         $stmt = $this->conexao->prepare($consulta);
         $stmt->bind_param("s", $email);
@@ -26,21 +28,28 @@ class LoginController{
         $resultado = $stmt->get_result();
 
         if ($resultado->num_rows == 0) {
-            echo 'false';
+            // redireciona para cadastroUusuario.php se o usuário não for encontrado
+            header("Location: /cadastroUsuario.php");
+            exit();
         }
 
         $usuario = $resultado->fetch_assoc();
 
         if ($usuario['senha'] == $senha) {
+            // inicia a sessão e manda para home.php
             $_SESSION['usuario_email'] = $usuario['email'];
             $_SESSION['usuario_id'] = $usuario['id_usuario'];
             header("Location: /home.php");
             exit();
         } else {
-            echo 'false';
+            // manda de volta para o login.php com a mensagem de erro
+            $_SESSION['erro_login'] = "Senha ou email incorretos!";
+            header("Location: /login.php");
+            exit();
         }
     }
 
+    // Função para deslogar
     public function logout() {
         session_unset();
         session_destroy();
@@ -48,7 +57,3 @@ class LoginController{
         exit();
     }
 }
-
-$login = new LoginController();
-$login->login('agatha@email.com', '123456');
-$login->logout();
