@@ -1,9 +1,9 @@
 <?php
-    include ("../css/header.php");
+    include ("../src/header.php");
 ?>
 
 <!-- Pagina principal -->
 
 
 <?php
-    include ("../css/footer.php");
+    include ("../src/footer.php");

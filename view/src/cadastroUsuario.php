@@ -41,7 +41,7 @@ include('../src/header.php');
         </div>
 
         <div id="btn-cadastrar">
-            <button href="#" id="btn-cadastrar" type="submit">
+            <button href="../src/home.php" id="btn-cadastrar" type="submit">
                 <p>Cadastrar</p>
             </button>
         </div>
