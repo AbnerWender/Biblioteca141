@@ -1,6 +1,4 @@
 <!-- Page Admin -->
-
-
  <!DOCTYPE html>
  <html lang="en">
  <head>
@@ -12,25 +10,41 @@
  <body>
     <?php include('header.php')?>
 
-    <div class="btn-group">
-        <button>Usuários</button>
-        <button>Livro</button>
-        <button>Emprestimos</button>
+    <div class="adm-content">
+        <div class="adm-card">
+            <header class="header-card">
+                <?php
+                    require_once "../../config/database.php";
+                    $Banco = new Banco();
+                    $conn = $Banco->conectar();
+                    
+                ?>
+                <img src="../imagens/AdmIcon.png" alt="Adm_Icon" class="adm-card-img">
+
+                <div class="informacoes">
+                    <h2 class="adm-card-titulo">Nome:</h2>
+                    <p class="adm-card-texto"><!--<?= $adm['nome']?>--></p>
+                    <h2 class="adm-card-titulo">Email:</h2>
+                    <p class="adm-card-texto"><!--<?= $adm['email']?>--></p>
+                    <h2 class="adm-card-titulo">Cpf:</h2>
+                    <p class="adm-card-texto"><!--<?= $adm['cpf']?>--></p>
+                </div>
+                
+                <?php
+                    $conn->close();
+                ?>
+            </header>
+
+            <footer class="footer-card">
+                <button class="botao"><a href="#" class="link-botao">Editar</a></button>
+            </footer>
+        </div>
+
+        <div class="container-botao">
+            <button class="botao"><a href="#" class="link-botao">Usuários</a></button>
+            <button class="botao"><a href="#" class="link-botao">Livros</a></button>
+            <button class="botao"><a href="#" class="link-botao">Empréstimos</a></button>
+        </div>
     </div>
-
-    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Pesquisar">
-
-    <?php 
-        require_once "../../config/database.php";
-        $Banco = new Banco();
-        $Banco->conectar();
-        $selectUsuarios = $Banco->conexao->query('select * from usuario');
-        $rowUsuario = $selectUsuarios->fetch_all(MYSQLI_ASSOC);
-        foreach ($rowUsuario as $Usuario){
-            echo $Usuario['nome'];
-        };
-    ?>
-
-
- </body>
- </html>
+</body>
+</html>
