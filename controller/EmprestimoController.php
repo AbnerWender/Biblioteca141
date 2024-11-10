@@ -9,7 +9,7 @@ class EmprestimoController{
         return $this->database->conectar();
     }
 
-    public function cadastrarEmprestimo($id_usuario, $id_livro, $ativo){
+    public function cadastrar($id_usuario, $id_livro, $ativo){
         $emprestimo = new Emprestimo($this->conectarBd());
 
         $this->emprestimo = $id_usuario;
@@ -23,33 +23,44 @@ class EmprestimoController{
         }
     }
 
-    public function lerEmprestimo($emprestimo){
+    public function buscar($emprestimo){
         $emprestimo = new Emprestimo($this->conectarBd());
+        $emprestimo->id_emprestimo = $id_emprestimo;
 
         if($emprestimo->read()){
             header('Location: index.php');
         } else{
-            echo "Erro ao ler empréstimo!";
+            echo "<script>alert(Empréstimo não encontrado!)</script>";
         }
     }
 
-    public function atualizarEmprestimo($emprestimo){
+    public function atualizar($emprestimo){
         $emprestimo = new Emprestimo($this->conectarBd());
+        $emprestimo->id_emprestimo = $id_emprestimo;
 
-        if($emprestimo->update()){
+        if ($emprestimo->read('id_emprestimo', $id_emprestimo)) {
+            $valores = [
+                'id_usuario' => $_POST['id_usuario'],
+                'id_livro' => $_POST['id_livro'],
+                'ativo' => $_POST['ativo']
+            ];
+            
+            $emprestimo->update($valores);
             header('Location: index.php');
-        } else{
-            echo "Erro ao atualizar empréstimo!";
+        } else {
+            echo "<script>alert('Empréstimo não encontrado!')</script>";
         }
     }
 
-    public function deletarEmprestimo($emprestimo){
+    public function deletar($emprestimo){
         $emprestimo = new Emprestimo($this->conectarBd());
+        $emprestimo->id_emprestimo = $id_emprestimo;
 
-        if($emprestimo->delete()){
+        if ($emprestimo->read('id_emprestimo', $id_emprestimo)) {
+            $emprestimo->delete();
             header('Location: index.php');
-        } else{
-            echo "Erro ao deletar empréstimo!";
+        } else {
+            echo "<script>alert('Empréstimo não encontrado!')</script>";
         }
     }
 }
