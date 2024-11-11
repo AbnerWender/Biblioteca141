@@ -1,13 +1,6 @@
 <?php
-
-require_once "Crud.php";
-
 require_once __DIR__ . "/../config/database.php";
 require "Crud.php";
-
-require_once "../config/database.php";
-
-
 
 class Livro {
     private $conexao;
@@ -68,7 +61,11 @@ class Livro {
     }
 
     public function read($valor){
-        $query = "SELECT * FROM {$this->tabela} WHERE titulo = '{$valor}' OR autor = '{$valor}' OR isbn = '{$valor}' OR genero = '{$valor}';";
+        if($valor == ""){
+            $query = "SELECT * FROM {$this->tabela};";
+        }else{
+            $query = "SELECT * FROM {$this->tabela} WHERE titulo = '{$valor}' OR autor = '{$valor}' OR isbn = '{$valor}' OR genero = '{$valor}';";
+        }
         $resultado = $this->conexao->query($query);
         return $resultado;
     }
