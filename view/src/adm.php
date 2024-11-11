@@ -42,7 +42,7 @@
 
         <div class="container-botao">
             <button class="botao"><a href="listaUsuarios.php" class="link-botao">Usuários</a></button>
-            <button class="botao"><a href="#" class="link-botao">Livros</a></button>
+            <button class="botao"><a href="listaLivro.php" class="link-botao">Livros</a></button>
             <button class="botao"><a href="#" class="link-botao">Empréstimos</a></button>
         </div>
     </div>
