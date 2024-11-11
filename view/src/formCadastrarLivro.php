@@ -34,11 +34,29 @@
 
             <input type="submit" value="Cadastrar Livro">
         </form>
+
+        <?php
+            if (isset($_GET['acaoLivro']) && $_GET['acaoLivro'] === 'cadastrar' && $_SERVER['REQUEST_METHOD'] === 'POST') {
+                $Banco = new Banco();
+                $conn = $Banco->conectar();
+        
+                $livro = new Livro($conn);
+
+                $livro->titulo = $_POST['titulo'];
+                $livro->autor = $_POST['autor'];
+                $livro->genero = $_POST['genero'];
+                $livro->isbn = $_POST['isbn'];
+                $livro->estaDisponivel = $_POST['estaDisponivel'] === '1' ? true : false;
+
+                if ($livro->create()) {
+                    echo "<script>alert('Livro cadastrado com sucesso!');</script>";
+                } else {
+                    echo "<script>alert('Erro ao cadastrar o livro.');</script>";
+                }
+            }
+
+
+        ?>
     </div>
 </body>
-</html>
 
-
-        <input type="submit" value="Cadastrar Livro">
-    </form>
-</div>
