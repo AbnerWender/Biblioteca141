@@ -1,6 +1,6 @@
 <?php
-require "../config/database.php";
-require "../model/livro.php";
+require "./config/database.php";
+require "./model/livro.php";
 
 class LivroController{
     public $livro;

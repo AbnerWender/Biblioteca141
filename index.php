@@ -5,6 +5,8 @@ session_start();
 if (isset($_SESSION['usuario_email'])) {
     header("Location: home.php");
     exit();
+} else{
+    include './view/src/login.php';
 }
 
 require_once './controller/LivroController.php';

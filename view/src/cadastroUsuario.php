@@ -1,6 +1,6 @@
 <!-- Page Cadastro Usuario -->
 <?php 
-include('../src/header.php');
+include('header.php');
 ?>
 
 <link rel="stylesheet" href="../css/cadastroUsuario.css">
@@ -45,7 +45,7 @@ include('../src/header.php');
                 <p>Cadastrar</p>
             </button>
         </div>
-        <p id="faca-login">Já possui cadastro? <a href="../src/login.php" id="btn-register">Faça Login</a></p>
+        <p id="faca-login">Já possui cadastro? <a href="index.php" id="btn-register">Faça Login</a></p>
 
     </form>
 
