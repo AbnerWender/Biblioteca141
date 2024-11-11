@@ -26,7 +26,8 @@
     border: 1.2px solid #f3f3f3;
     padding: 6px 12px;
     border-radius: 4px;
-    background-color: transparent;   
+    background-color: transparent;
+    color: aliceblue;
 }
 
 input::placeholder{
@@ -109,7 +110,7 @@ input::placeholder{
     width: 120px;
     background-color: #1d0000;
     color: aliceblue;
-    border-radius: 3px;
+    border-radius: 8px;
     border: none;
     padding: 3px 5px;
 }

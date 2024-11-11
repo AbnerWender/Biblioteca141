@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . "../config/database.php";
+require_once __DIR__ . "/../config/database.php";
 require "Crud.php";
 
 class Livro implements Crud{
@@ -55,7 +55,7 @@ class Livro implements Crud{
     }
 
     public function read($valor){
-        $query = "SELECT * FROM {$this->tabela} WHERE titulo = '{$valor}' OR autor = '{$valor}' OR isbn = '{$valor} OR genero = '{$valor}';";
+        $query = "SELECT * FROM {$this->tabela} WHERE titulo = '{$valor}' OR autor = '{$valor}' OR isbn = '{$valor}' OR genero = '{$valor}';";
         $resultado = $this->conexao->query($query);
         return $resultado;
     }
