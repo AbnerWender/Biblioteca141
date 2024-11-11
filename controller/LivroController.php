@@ -1,35 +1,34 @@
 <?php
-require "./config/database.php";
-require "./model/livro.php";
+require_once "./config/database.php";
+require_once "./model/livro.php";
 
-class LivroController{
-    public $livro;
-    public $database;
+class LivroController {
+    private $database;
+    private $conexao;
 
-    public function conectarBd(){
+    public function __construct() {
         $this->database = new Banco();
-        return $this->database->conectar();
+        $this->conexao = $this->database->conectar();
     }
 
-    public function cadastrar($titulo, $autor, $genero, $isbn, $estaDisponivel){
-        $livro = new Livro($this->conectarBd());
+    public function cadastrar($titulo, $autor, $genero, $isbn, $estaDisponivel) {
+        $livro = new Livro($this->conexao);
+        $livro->titulo = $titulo;
+        $livro->autor = $autor;
+        $livro->genero = $genero;
+        $livro->isbn = $isbn;
+        $livro->estaDisponivel = $estaDisponivel;
 
-        $this->livro = $titulo;
-        $this->livro = $autor;
-        $this->livro = $genero;
-        $this->livro = $isbn;
-        $this->livro = $estaDisponivel;
-
-        if($this->livro->create()){
+        if($livro->create()){
             header('Location: index.php');
-        } else{
-            echo "<script>alert(Erro ao cadastrar livro!)</script>";
+        } else {
+            echo "<script>alert('Erro ao cadastrar livro!');</script>";
         }
     }
 
 
     public function buscar($livro){
-        $livro = new Livro($this->conectarBd());
+        $livro = new Livro($this->conexao);
         $livro->id_livro = $id_livro;
 
         if($livro->read()){
@@ -40,7 +39,7 @@ class LivroController{
     }
 
     public function atualizar($livro){
-        $livro = new Livro($this->conectarBd());
+        $livro = new Livro($this->conexao);
         $livro->id_livro = $id_livro;
 
         if ($livro->read('id_livro', $id_livro)) {
@@ -60,7 +59,7 @@ class LivroController{
     }
 
     public function deletar($livro){
-        $livro = new Livro($this->conectarBd());
+        $livro = new Livro($this->conexao);
         $livro->id_livro = $id_livro;
 
         if ($livro->read('id_livro', $id_livro)) {

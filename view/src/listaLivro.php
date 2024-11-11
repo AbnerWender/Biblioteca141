@@ -11,12 +11,12 @@
 
     <div class="content">
         <div class="top-content">
-            <form class="search-form" role="search">
+            <form class="search-form" role="search" method="POST">
                 <input class="form-input" type="search" name="search" placeholder="Search" aria-label="Search">
                 <button class="search-btn" type="submit">Buscar</button>
             </form>
 
-            <button class="cadastrar-btn"><a href="#" class="cadastrar-link">Cadastrar</a></button>
+            <button class="cadastrar-btn"><a href="formCadastrarLivro.php" class="cadastrar-link">Cadastrar</a></button>
         </div>
         
 
@@ -27,7 +27,7 @@
                 $Banco = new Banco();
                 $conn = $Banco->conectar();
                 
-                $valor = isset($_GET['search']) ? $_GET['search'] : '';
+                $valor = isset($_POST['search']) ? $_POST['search'] : '';
                 $livro = new Livro($conn);
 
                 if($valor == ''){

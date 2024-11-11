@@ -1,7 +1,12 @@
 <?php
 
+require_once "./config/database.php";
+require_once "./model/Usuario.php";
+
+
 require "./config/database.php";
 require "./model/Usuario.php";
+
 
 class UsuarioController{
     public $usuario;
