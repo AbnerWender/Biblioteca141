@@ -1,5 +1,5 @@
 <?php
-require_once "../config/database.php";
+require_once __DIR__ . "/../config/database.php";
 require "Crud.php";
 
 class Usuario implements Crud{
@@ -7,9 +7,10 @@ class Usuario implements Crud{
     private $tabela = 'usuario';
     public $id_usuario;
     public $nome;
-    public $email;
-    public $senha;
     public $cpf;
+    public $email;
+    public $dataNasc;
+    public $senha;
     public $livrosEmprestados = [];
     const maxEmprestimo = 3;
     
@@ -40,13 +41,17 @@ class Usuario implements Crud{
     // }
 
     public function create(){
-        $query = "INSERT INTO {$this->tabela} (nome, email, senha, cpf) VALUES ('{$this->nome}', '{$this->email}', '{$this->senha}', '{$this->cpf}');";
+        $query = "INSERT INTO {$this->tabela} (nome, cpf, email, dataNasc, senha) VALUES ('{$this->nome}', '{$this->cpf}', '{$this->email}', '{$this->dataNasc}', '{$this->senha}');";
         $resultado = $this->conexao->query($query);
         return $resultado;
     }
 
     public function read($valor){
-        $query = "SELECT * FROM {$this->tabela} WHERE id_usuario = '{$valor}' or nome = '{$valor}' or email = '{$valor}';";
+        if($valor == ""){
+            $query = "SELECT * FROM {$this->tabela};";
+        }else{
+            $query = "SELECT * FROM {$this->tabela} WHERE id_usuario = '{$valor}' or nome = '{$valor}' or email = '{$valor}';";
+        }
         $resultado = $this->conexao->query($query);
         return $resultado;
     }
