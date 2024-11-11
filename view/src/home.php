@@ -2,6 +2,7 @@
 include("../src/header.php");
 ?>
 
+
 <style>
     .promocao {
         height: 800px;
@@ -303,10 +304,6 @@ include("../src/header.php");
 
     });
 </script>
-
-<div class="fs-2 text-start text-light">
-    Livros Disponiveis
-</div>
 
 
 <?php
