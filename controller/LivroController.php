@@ -1,6 +1,6 @@
 <?php
-require "./config/database.php";
-require "./model/livro.php";
+require_once "./config/database.php";
+require_once "./model/livro.php";
 
 class LivroController{
     public $livro;
@@ -12,14 +12,13 @@ class LivroController{
     }
 
     public function cadastrar($titulo, $autor, $genero, $isbn, $estaDisponivel){
-        $livro = new Livro($this->conectarBd());
+        $this->livro = new Livro($this->conectarBd());
 
         $this->livro = $titulo;
         $this->livro = $autor;
         $this->livro = $genero;
         $this->livro = $isbn;
         $this->livro = $estaDisponivel;
-
         if($this->livro->create()){
             header('Location: index.php');
         } else{
