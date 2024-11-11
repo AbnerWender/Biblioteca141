@@ -1,5 +1,5 @@
 <?php 
-include('../src/header.php');
+include('./view/src/header.php');
 ?>
 <link rel="stylesheet" href="../css/loginUsuario.css">
 
@@ -26,7 +26,7 @@ include('../src/header.php');
                 <p>Entrar</p>
             </button>
         </div>
-        <p id="faca-cadastro">Não possue login? <a href="../src/cadastroUsuario.php" id="btn-registro">Faça Cadastro</a></p>
+        <p id="faca-cadastro">Não possue login? <a href="./view/src/cadastroUsuario.php" id="btn-registro">Faça Cadastro</a></p>
     </form>
 </section>
 </section>

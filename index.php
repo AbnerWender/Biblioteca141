@@ -2,10 +2,12 @@
 session_start();
 
 // Verifica o login, se o usuário estiver logado manda para home.php
-if (isset($_SESSION['usuario_email'])) {
+/*if (isset($_SESSION['usuario_email'])) {
     header("Location: home.php");
     exit();
-}
+} else{
+    include './view/src/login.php';
+}*/
 
 require_once './controller/LivroController.php';
 require_once './controller/UsuarioController.php';
@@ -55,7 +57,7 @@ switch ($acaoLivro) {
 
     default:
         // se não for nenhuma das ações manda para o login.php
-        include 'view/login.php';
+        include 'view/src/formCadastrarLivro.php';
         break;
 }
 
@@ -103,7 +105,11 @@ switch ($acaoUsuario) {
         break;
 
     default:
+
         // se não for nenhuma das ações manda para o login.php
-        include 'view/login.php';
+        //include 'view/src/formCadastrarLivro.php';
         break;
+
+        include 'view/src/login.php';
+
 }
