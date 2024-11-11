@@ -7,9 +7,10 @@ class Usuario implements Crud{
     private $tabela = 'usuario';
     public $id_usuario;
     public $nome;
-    public $email;
-    public $senha;
     public $cpf;
+    public $email;
+    public $dataNasc;
+    public $senha;
     public $livrosEmprestados = [];
     const maxEmprestimo = 3;
     
@@ -40,7 +41,7 @@ class Usuario implements Crud{
     // }
 
     public function create(){
-        $query = "INSERT INTO {$this->tabela} (nome, email, senha, cpf) VALUES ('{$this->nome}', '{$this->email}', '{$this->senha}', '{$this->cpf}');";
+        $query = "INSERT INTO {$this->tabela} (nome, cpf, email, dataNasc, senha) VALUES ('{$this->nome}', '{$this->cpf}', '{$this->email}', '{$this->dataNasc}', '{$this->senha}');";
         $resultado = $this->conexao->query($query);
         return $resultado;
     }
