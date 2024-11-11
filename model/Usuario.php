@@ -1,5 +1,5 @@
 <?php
-require_once "../config/database.php";
+require_once __DIR__ . "/../config/database.php";
 require "Crud.php";
 
 class Usuario implements Crud{
@@ -46,7 +46,11 @@ class Usuario implements Crud{
     }
 
     public function read($valor){
-        $query = "SELECT * FROM {$this->tabela} WHERE id_usuario = '{$valor}' or nome = '{$valor}' or email = '{$valor}';";
+        if($valor == ""){
+            $query = "SELECT * FROM {$this->tabela};";
+        }else{
+            $query = "SELECT * FROM {$this->tabela} WHERE id_usuario = '{$valor}' or nome = '{$valor}' or email = '{$valor}';";
+        }
         $resultado = $this->conexao->query($query);
         return $resultado;
     }
