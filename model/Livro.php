@@ -14,8 +14,8 @@ class Livro {
     public $usuario;
     public $estaDisponivel = true;
 
-    public function __construct($db){
-        $this->conexao = $db;
+    public function __construct($conexao) {
+        $this->conexao = $conexao;
     }
 
     public function getIdLivro($id_livro){
@@ -23,23 +23,6 @@ class Livro {
         $resultado = $this->conexao->query($query);
         return $resultado->fetch_all(MYSQLI_ASSOC);
     }
-
-    // public function emprestar($usuario){
-    //     if($this->estaDisponivel == false){
-    //         return '<script>alert("Livro já está emprestado")</script>';
-    //     }
-    //     $this->usuario = $usuario;
-    //     $this->estaDisponivel = false;
-    // }
-
-    // public function devolver(){
-    //     if($this->estaDisponivel == true){
-    //         echo 'Livro não está emprestado';
-    //         return;
-    //     }
-    //     $this->usuario = null;
-    //     $this->estaDisponivel = true;
-    // }
 
     public function create() {
         // Verifica se o ISBN já está cadastrado
@@ -97,7 +80,17 @@ class Livro {
         }
     }
 
-//     public function read($coluna, $valor){
+    public function delete(){
+         if(!$this->estaDisponivel){
+             return "<script>alert('Não é possivel deletar livro emprestado')</script>";
+         };
+
+         $query = "DELETE FROM {$this->tabela} WHERE id_livro = {$this->id_livro};";
+         $resultado = $this->conexao->query($query);
+         return $resultado;
+    }
+
+    //     public function read($coluna, $valor){
 //         $query = "SELECT * FROM {$this->tabela} WHERE {$coluna} = {$valor};";
 //         $resultado = $this->conexao->query($query);
 //         return $resultado;
@@ -130,15 +123,23 @@ class Livro {
 //         return $resultado;
 //     }
 
-//     public function delete(){
-//         if(!$this->estaDisponivel){
-//             return "<script>alert('Não é possivel deletar livro emprestado')</script>";
-//         };
+    // public function emprestar($usuario){
+    //     if($this->estaDisponivel == false){
+    //         return '<script>alert("Livro já está emprestado")</script>';
+    //     }
+    //     $this->usuario = $usuario;
+    //     $this->estaDisponivel = false;
+    // }
 
-//         $query = "DELETE FROM {$this->tabela} WHERE id_livro = {$this->id_livro};";
-//         $resultado = $this->conexao->query($query);
-//         return $resultado;
-//     }
+    // public function devolver(){
+    //     if($this->estaDisponivel == true){
+    //         echo 'Livro não está emprestado';
+    //         return;
+    //     }
+    //     $this->usuario = null;
+    //     $this->estaDisponivel = true;
+    // }
+
 }
 
 

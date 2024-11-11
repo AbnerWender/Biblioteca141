@@ -1,0 +1,14 @@
+#imagem-aleatoria {
+    width: 1024px;
+    height: 576px;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#imagem-conteudo {
+    width: 100%;
+    height: 100%;    
+}
