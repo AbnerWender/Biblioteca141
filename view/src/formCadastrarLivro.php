@@ -4,21 +4,26 @@
 
     <h3>Cadastrar Livro</h3>
 
-    <form action="index.php?acao=cadastrarLivro" method="get">
-        <label for="titulo">Titulo do Livro: </label>
+    <form action="index.php?acaoLivro=cadastrar" method="POST">
+        <label for="titulo">Titulo: </label>
         <input type="text" name="titulo" id="titulo">
 
-        <label for="autor">Autor do Livro: </label>
+        <label for="autor">Autor: </label>
         <input type="text" name="autor" id="autor">
 
-        <label for="genero">Gênero do Livro: </label>
+        <label for="genero">Gênero: </label>
         <input type="text" name="genero" id="genero">
 
+        <label for="isbn">ISBN: </label>
+        <input type="number" name="isbn" id="descricao">
 
-        <label for="descricao">Sinópse: </label>
-        <input type="text" name="descricao" id="descricao">
+        <label for="estaDisponivel">Disponivel</label>
+        <input type="radio" name="estaDisponivel" id="disponibilidade" value="True">
+
+        <label for="estaDisponivel">Indisponivel</label>
+        <input type="radio" name="estaDisponivel" id="disponibilidade" value="False">
 
         <input type="submit" value="Cadastrar Livro">
     </form>
-
 </div>
+

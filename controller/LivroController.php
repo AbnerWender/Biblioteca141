@@ -1,6 +1,6 @@
 <?php
-require __DIR__ . '/../config/database.php';
-require __DIR__ . '/../model/livro.php';
+require "./config/database.php";
+require "./model/livro.php";
 
 class LivroController{
     public $livro;
@@ -11,7 +11,7 @@ class LivroController{
         return $this->database->conectar();
     }
 
-    public function cadastrarLivro($titulo, $autor, $genero, $isbn, $estaDisponivel){
+    public function cadastrar($titulo, $autor, $genero, $isbn, $estaDisponivel){
         $livro = new Livro($this->conectarBd());
 
         $this->livro = $titulo;
@@ -24,6 +24,50 @@ class LivroController{
             header('Location: index.php');
         } else{
             echo "<script>alert(Erro ao cadastrar livro!)</script>";
+        }
+    }
+
+
+    public function buscar($livro){
+        $livro = new Livro($this->conectarBd());
+        $livro->id_livro = $id_livro;
+
+        if($livro->read()){
+            header('Location: index.php');
+        } else{
+            echo "<script>alert(Livro não encontrado!)</script>";
+        }
+    }
+
+    public function atualizar($livro){
+        $livro = new Livro($this->conectarBd());
+        $livro->id_livro = $id_livro;
+
+        if ($livro->read('id_livro', $id_livro)) {
+            $valores = [
+                'titulo' => $_POST['titulo'],
+                'autor' => $_POST['autor'],
+                'genero' => $_POST['genero'],
+                'isbn' => $_POST['isbn'],
+                'estaDisponivel' => $_POST['estaDisponivel']
+            ];
+            
+            $livro->update($valores);
+            header('Location: index.php');
+        } else {
+            echo "<script>alert('Livro não encontrado!')</script>";
+        }
+    }
+
+    public function deletar($livro){
+        $livro = new Livro($this->conectarBd());
+        $livro->id_livro = $id_livro;
+
+        if ($livro->read('id_livro', $id_livro)) {
+            $livro->delete();
+            header('Location: index.php');
+        } else {
+            echo "<script>alert('Livro não encontrado!')</script>";
         }
     }
 
@@ -59,4 +103,5 @@ class LivroController{
     //         echo "<script>alert(Erro ao deletar livro!)</script>";
     //     }
     // }
+
 }

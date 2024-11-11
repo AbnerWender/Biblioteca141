@@ -1,7 +1,13 @@
 <?php
+
+require_once __DIR__ . "../config/database.php";
+require 'Livro.php';
+require 'Usuario.php';
+
 // require_once "../config/database.php";
 // require 'Livro.php';
 // require 'Usuario.php';
+
 
 // class Emprestimo {
 //     private $conexao;

@@ -1,5 +1,10 @@
 <?php
+
+require_once __DIR__ . "/../config/database.php";
+require "Crud.php";
+=======
 require_once "../config/database.php";
+
 
 class Livro {
     private $conexao;
@@ -52,6 +57,23 @@ class Livro {
                 return "<script>alert('Livro já cadastrado');</script>";
             }
         }
+
+
+        $query = "INSERT INTO {$this->tabela} (titulo, autor, genero) VALUES ('{$this->titulo}', '{$this->autor}', '{$this->genero}');";
+        $resultado = $this->conexao->query($query);
+        return $resultado;
+    }
+
+    public function read($valor){
+        $query = "SELECT * FROM {$this->tabela} WHERE titulo = '{$valor}' OR autor = '{$valor}' OR isbn = '{$valor}' OR genero = '{$valor}';";
+        $resultado = $this->conexao->query($query);
+        return $resultado;
+    }
+
+    public function update($valores){
+        $verificaSeExiste = "SELECT COUNT(*) FROM {$this->tabela} WHERE id = '{$this->id_livro}';";
+        $resultadoVerificacao = $this->conexao->query($verificaSeExiste);
+
     
         // Prepara a consulta SQL para inserir o novo livro
         $query = "INSERT INTO {$this->tabela} (titulo, autor, genero, isbn, estaDisponivel) VALUES (?, ?, ?, ?, ?);";

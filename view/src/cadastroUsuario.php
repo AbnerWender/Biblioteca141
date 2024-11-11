@@ -1,6 +1,6 @@
 <!-- Page Cadastro Usuario -->
 <?php 
-include('../src/header.php');
+include('header.php');
 ?>
 
 <link rel="stylesheet" href="../css/cadastroUsuario.css">
@@ -36,16 +36,16 @@ include('../src/header.php');
             </div>
             
             <div>
-                <input type="password" name="senha" id="senha" placeholder="Confirmar Senha *">
+                <input type="password" name="senha" id="confirma-senha" placeholder="Confirmar Senha *">
             </div>
         </div>
 
         <div id="btn-cadastrar">
-            <button href="#" id="btn-cadastrar" type="submit">
+            <button href="../src/home.php" id="btn-cadastrar" type="submit">
                 <p>Cadastrar</p>
             </button>
         </div>
-        <p id="faca-login">Já possui cadastro? <a href="#" id="btn-register">Faça Login</a></p>
+        <p id="faca-login">Já possui cadastro? <a href="index.php" id="btn-register">Faça Login</a></p>
 
     </form>
 

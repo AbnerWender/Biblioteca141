@@ -1,4 +1,20 @@
 <?php
+
+require_once __DIR__ . "/../config/database.php";
+require "Crud.php";
+
+class Usuario implements Crud{
+    private $conexao;
+    private $tabela = 'usuario';
+    public $id_usuario;
+    public $nome;
+    public $cpf;
+    public $email;
+    public $dataNasc;
+    public $senha;
+    public $livrosEmprestados = [];
+    const maxEmprestimo = 3;
+
 // require_once "../config/database.php";
 // require "Crud.php";
 
@@ -12,6 +28,7 @@
 //     public $cpf;
 //     public $livrosEmprestados = [];
 //     const maxEmprestimo = 3;
+
     
 //     public function __construct($db){
 //         $this->conexao = $db;
@@ -39,6 +56,23 @@
 //     //     }
 //     // }
 
+
+    public function create(){
+        $query = "INSERT INTO {$this->tabela} (nome, cpf, email, dataNasc, senha) VALUES ('{$this->nome}', '{$this->cpf}', '{$this->email}', '{$this->dataNasc}', '{$this->senha}');";
+        $resultado = $this->conexao->query($query);
+        return $resultado;
+    }
+
+    public function read($valor){
+        if($valor == ""){
+            $query = "SELECT * FROM {$this->tabela};";
+        }else{
+            $query = "SELECT * FROM {$this->tabela} WHERE id_usuario = '{$valor}' or nome = '{$valor}' or email = '{$valor}';";
+        }
+        $resultado = $this->conexao->query($query);
+        return $resultado;
+    }
+
 //     public function create(){
 //         $query = "INSERT INTO {$this->tabela} (nome, email, senha, cpf) VALUES ('{$this->nome}', '{$this->email}', '{$this->senha}', '{$this->cpf}');";
 //         $resultado = $this->conexao->query($query);
@@ -50,6 +84,7 @@
 //         $resultado = $this->conexao->query($query);
 //         return $resultado;
 //     }
+
 
 //     public function update($valores){
 //         $verificaSeExiste = "SELECT COUNT(*) FROM {$this->tabela} WHERE id = '{$this->id_usuario}';";
