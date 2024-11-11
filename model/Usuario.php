@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . "/../config/database.php";
-require "Crud.php";
+require_once "Crud.php";
 
 class Usuario implements Crud{
     private $conexao;

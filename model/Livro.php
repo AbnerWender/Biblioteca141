@@ -1,6 +1,5 @@
 <?php
-require_once __DIR__ . "/../config/database.php";
-require "Crud.php";
+require_once "Crud.php";
 
 class Livro implements Crud{
     private $conexao;
