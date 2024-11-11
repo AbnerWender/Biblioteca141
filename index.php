@@ -105,7 +105,11 @@ switch ($acaoUsuario) {
         break;
 
     default:
+
         // se não for nenhuma das ações manda para o login.php
         //include 'view/src/formCadastrarLivro.php';
         break;
+
+        include 'view/src/login.php';
+
 }

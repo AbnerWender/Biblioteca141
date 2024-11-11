@@ -26,6 +26,7 @@ class LivroController{
         }
     }
 
+
     public function buscar($livro){
         $livro = new Livro($this->conectarBd());
         $livro->id_livro = $id_livro;
@@ -68,4 +69,38 @@ class LivroController{
             echo "<script>alert('Livro não encontrado!')</script>";
         }
     }
+
+    // public function buscarLivro($livro){
+    //     $livro = new Livro($this->conectarBd());
+    //     $livro->id_livro = $id_livro;
+
+    //     if($livro->read()){
+    //         header('Location: index.php');
+    //     } else{
+    //         echo "<script>alert(Livro não encontrado!)</script>";
+    //     }
+    // }
+
+    // public function atualizarLivro($livro){
+    //     $livro = new Livro($this->conectarBd());
+    //     $livro->id_livro = $id_livro;
+
+    //     if($livro->read()){
+    //         $livro->update();
+    //     } else{
+    //         echo "<script>alert(Erro ao atualizar livro!)</script>";
+    //     }
+    // }
+
+    // public function deletarLivro($livro){
+    //     $livro = new Livro($this->conectarBd());
+    //     $livro->id_livro = $id_livro;
+
+    //     if($livro->read()){
+    //         $livro->delete();
+    //     } else{
+    //         echo "<script>alert(Erro ao deletar livro!)</script>";
+    //     }
+    // }
+
 }
