@@ -21,43 +21,43 @@ switch ($acaoLivro) {
             $LivroController->cadastrar($_POST['titulo'], $_POST['autor'], $_POST['genero'], $_POST['isbn'], $_POST['estaDisponivel']);
         } else {
             echo "<script>alert('Preencha todos os campos para cadastrar o livro!');</script>";
-            include 'view/cadastrarLivro.php'; // manda para o formulário dnv
+            include 'view/src/formcadastrarLivro.php'; // manda para o formulário dnv
         }
         break;
 
-    case 'buscar': // vai pegar o id da url
-            if (isset($_GET['id_livro'])) {
-                $LivroController = new LivroController();
-                $LivroController->buscar($_GET['id_livro']);
-            } else {
-                echo "<script>alert('ID do livro não fornecido!');</script>";
-                include 'view/??????.php';
-            }
-            break;
+    // case 'buscar': // vai pegar o id da url
+    //         if (isset($_GET['id_livro'])) {
+    //             $LivroController = new LivroController();
+    //             $LivroController->buscar($_GET['id_livro']);
+    //         } else {
+    //             echo "<script>alert('ID do livro não fornecido!');</script>";
+    //             include 'view/??????.php';
+    //         }
+    //         break;
 
-    case 'atualizar': // atualiza as informações do livro
-        if (isset($_GET['id_livro'])) {
-            $LivroController = new LivroController();
-            $LivroController->atualizar($_GET['id_livro']);
-        } else {
-            echo "<script>alert('ID do livro não fornecido para atualização!');</script>";
-            include 'view/????.php';
-        }
-        break;
+    // case 'atualizar': // atualiza as informações do livro
+    //     if (isset($_GET['id_livro'])) {
+    //         $LivroController = new LivroController();
+    //         $LivroController->atualizar($_GET['id_livro']);
+    //     } else {
+    //         echo "<script>alert('ID do livro não fornecido para atualização!');</script>";
+    //         include 'view/????.php';
+    //     }
+    //     break;
 
-    case 'deletar': // deleta o livro
-        if (isset($_GET['id_livro'])) {
-            $LivroController = new LivroController();
-            $LivroController->deletar($_GET['id_livro']);
-        } else {
-            echo "<script>alert('ID do livro não fornecido para exclusão!');</script>";
-            include 'view/????..php';
-        }
-        break;
+    // case 'deletar': // deleta o livro
+    //     if (isset($_GET['id_livro'])) {
+    //         $LivroController = new LivroController();
+    //         $LivroController->deletar($_GET['id_livro']);
+    //     } else {
+    //         echo "<script>alert('ID do livro não fornecido para exclusão!');</script>";
+    //         include 'view/????..php';
+    //     }
+    //     break;
 
     default:
         // se não for nenhuma das ações manda para o login.php
-        include 'view/src/formCadastrarLivro.php';
+        echo '<script>alert("DEU CERTO!");</script>';
         break;
 }
 
