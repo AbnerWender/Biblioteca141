@@ -1,6 +1,6 @@
 <?php
-require_once "../config/database.php";
-require_once "../model/livro.php";
+
+require_once "C:/xampp/htdocs/Biblioteca141/model/Livro.php";
 
 class LivroController {
     private $database;
@@ -20,13 +20,7 @@ class LivroController {
         $livro->estaDisponivel = $estaDisponivel;
 
         if($livro->create()){    
-            header("Location: ../index.php?acaoLivro=cadastrar");
-            echo "<script>alert('DEU CERTO!');</script>";
+            header("Location: index.php?acaoLivro=livro&isbn={$livro->isbn};");
         }
     }
 }
-
-$livro = new LivroController();
-$livro->cadastrar("TESTE", "TESTE", "TESTE", "2141412412", True);
-$livro->cadastrar("TESTE", "TESTE", "TESTE", "2141412412", True);
-

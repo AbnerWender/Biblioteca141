@@ -1,6 +1,3 @@
-<?php 
-include('./view/src/header.php');
-?>
 <link rel="stylesheet" href="../css/loginUsuario.css">
 
 <section class="login-screen">
