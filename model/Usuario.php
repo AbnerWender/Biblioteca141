@@ -1,5 +1,9 @@
 <?php
 
+=======
+require_once "../config/database.php";
+
+
 require_once __DIR__ . "/../config/database.php";
 require_once "Crud.php";
 class Usuario implements Crud{
@@ -10,7 +14,12 @@ class Usuario implements Crud{
     public $email;
     public $senha;
     public $cpf;
+
     public $dataNasc;
+    public $livrosEmprestados = [];
+    const maxEmprestimo = 3;
+
+
     public $livrosEmprestados = [];
     const maxEmprestimo = 3;
 
@@ -21,6 +30,7 @@ class Usuario implements Crud{
 
     public function getIdUsuario($id_usuario){
         $query = "SELECT * FROM {$this->tabela} WHERE id = {$this->id_usuario}";
+
         $resultado = $this->conexao->query($query);
         return $resultado->fetch_all(MYSQLI_ASSOC);
     }
@@ -44,9 +54,11 @@ class Usuario implements Crud{
 
     public function create(){
         $query = "INSERT INTO {$this->tabela} (nome, cpf, email, dataNasc, senha) VALUES ('{$this->nome}', '{$this->cpf}', '{$this->email}', '{$this->dataNasc}', '{$this->senha}');";
+
         $resultado = $this->conexao->query($query);
-        return $resultado;
+        return $resultado->fetch_all(MYSQLI_ASSOC);
     }
+
 
     public function read($valor){
         if($valor == ""){
@@ -54,9 +66,16 @@ class Usuario implements Crud{
         }else{
             $query = "SELECT * FROM {$this->tabela} WHERE id_usuario = '{$valor}' or nome = '{$valor}' or email = '{$valor}';";
         }
+
+    public function create(){
+        $query = "INSERT INTO {$this->tabela} (nome, email, senha, cpf) VALUES ('{$this->nome}', '{$this->email}', '{$this->senha}', '{$this->cpf}');";
+
         $resultado = $this->conexao->query($query);
         return $resultado;
     }
+
+
+    public function read($coluna, $valor){}
 
 
     public function update($valores){
@@ -88,7 +107,11 @@ class Usuario implements Crud{
     
     public function delete(){
         if(self::maxEmprestimo > 0){
+
             return "<script>alert('Não foi possivel deletar usuário\nUsuário com emprestimo ativo')</script>";
+
+            return "Não foi possivel deletar usuário\nUsuário com emprestimo ativo";
+
         };
 
         $query = "DELETE FROM {$this->tabela} WHERE id_livro = {$this->id_usuario};";
