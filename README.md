@@ -45,15 +45,3 @@ Este projeto visa desenvolver um sistema de gerenciamento de biblioteca em PHP u
 * **Banco de dados:** Criação do banco de dados e definição das tabelas para armazenar as informações dos livros, usuários e empréstimos.
 * **Interface do usuário:** Desenvolvimento da interface web utilizando HTML, CSS e JavaScript.
 * **Testes:** Realização de testes unitários e de integração para garantir a qualidade do sistema.
-
-**Este Markdown fornece uma visão geral do projeto e serve como um ponto de partida para o desenvolvimento do sistema de biblioteca.**
-
-**Gostaria de aprofundar em algum tópico específico?** 
-
-Possíveis tópicos: 
-* **Escolha da tecnologia:** Frameworks PHP, banco de dados, ferramentas de versionamento.
-* **Design patterns:** Padrões de projeto que podem ser aplicados no sistema.
-* **Segurança:** Medidas para proteger o sistema contra ataques.
-* **Usabilidade:** Como tornar a interface do usuário intuitiva e fácil de usar. 
-
-**Qual sua dúvida?** 
