@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="./view/css/loginUsuario.css">
+<link rel="stylesheet" href="../../css/loginUsuario.css">
 
 <section class="login-screen">
 

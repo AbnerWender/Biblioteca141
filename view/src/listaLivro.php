@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <?php include('header.php')?>
+    <?php include('../templates/header.php') ?>
 
     <div class="content">
         <div class="top-content">
@@ -16,7 +16,7 @@
                 <button class="search-btn" type="submit">Buscar</button>
             </form>
 
-            <button class="cadastrar-btn"><a href="formCadastrarLivro.php" class="cadastrar-link">Cadastrar</a></button>
+            <button class="cadastrar-btn"><a href="../templates/forms/formCadastrarLivro.php" class="cadastrar-link">Cadastrar</a></button>
         </div>
         
 
