@@ -1,56 +1,105 @@
 <?php
-require "./config/database.php";
-require "./model/Livro.php";
 
-class LivroController{
-    public $livro;
+require_once "C:/xampp/htdocs/Biblioteca141/model/Livro.php";
 
-    public function cadastrarLivro($titulo, $autor, $genero){
-        $database = new Banco();
-        $bd = $database->conectar();
+class LivroController {
+    private $database;
+    private $conexao;
 
-        $this->livro = new Livro($bd);
-        $this->livro = $titulo;
-        $this->livro = $autor;
-        $this->livro = $genero;
+    public function __construct() {
+        $this->database = new Banco();
+        $this->conexao = $this->database->conectar();
+    }
 
-        if($livro->create()){
-            header('Location: index.php');
-        } else{
-            echo "Erro ao cadastrar livro!";
+    public function cadastrar($titulo, $autor, $genero, $isbn, $estaDisponivel) {
+        $livro = new Livro($this->conexao);
+        $livro->titulo = $titulo;
+        $livro->autor = $autor;
+        $livro->genero = $genero;
+        $livro->isbn = $isbn;
+        $livro->estaDisponivel = $estaDisponivel;
+
+        if($livro->create()){    
+            header("Location: index.php?acaoLivro=livro&isbn={$livro->isbn};");
         }
     }
 
-    public function lerLivro($livro){
-        $database = new Banco();
-        $bd = $database->conectar();
+    
+    public function buscar($livro){
+        $livro = new Livro($this->conexao);
+        $livro->id_livro = $id_livro;
 
         if($livro->read()){
             header('Location: index.php');
         } else{
-            echo "Erro ao ler livro!";
+            echo "<script>alert(Livro não encontrado!)</script>";
         }
     }
 
-    public function atualizarLivro($livro){
-        $database = new Banco();
-        $bd = $database->conectar();
+    public function atualizar($livro){
+        $livro = new Livro($this->conexao);
+        $livro->id_livro = $id_livro;
 
-        if($livro->update()){
+        if ($livro->read('id_livro', $id_livro)) {
+            $valores = [
+                'titulo' => $_POST['titulo'],
+                'autor' => $_POST['autor'],
+                'genero' => $_POST['genero'],
+                'isbn' => $_POST['isbn'],
+                'estaDisponivel' => $_POST['estaDisponivel']
+            ];
+            
+            $livro->update($valores);
             header('Location: index.php');
-        } else{
-            echo "Erro ao atualizar livro!";
+        } else {
+            echo "<script>alert('Livro não encontrado!')</script>";
         }
     }
 
-    public function deletarLivro($livro){
-        $database = new Banco();
-        $bd = $database->conectar();
+    public function deletar($livro){
+        $livro = new Livro($this->conexao);
+        $livro->id_livro = $id_livro;
 
-        if($livro->delete()){
+        if ($livro->read('id_livro', $id_livro)) {
+            $livro->delete();
             header('Location: index.php');
-        } else{
-            echo "Erro ao deletar livro!";
+        } else {
+            echo "<script>alert('Livro não encontrado!')</script>";
         }
     }
+
+    // public function buscarLivro($livro){
+    //     $livro = new Livro($this->conectarBd());
+    //     $livro->id_livro = $id_livro;
+
+    //     if($livro->read()){
+    //         header('Location: index.php');
+    //     } else{
+    //         echo "<script>alert(Livro não encontrado!)</script>";
+    //     }
+    // }
+
+    // public function atualizarLivro($livro){
+    //     $livro = new Livro($this->conectarBd());
+    //     $livro->id_livro = $id_livro;
+
+    //     if($livro->read()){
+    //         $livro->update();
+    //     } else{
+    //         echo "<script>alert(Erro ao atualizar livro!)</script>";
+    //     }
+    // }
+
+    // public function deletarLivro($livro){
+    //     $livro = new Livro($this->conectarBd());
+    //     $livro->id_livro = $id_livro;
+
+    //     if($livro->read()){
+    //         $livro->delete();
+    //     } else{
+    //         echo "<script>alert(Erro ao deletar livro!)</script>";
+    //     }
+    // }
+
 }
+

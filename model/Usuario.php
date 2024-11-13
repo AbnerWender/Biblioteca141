@@ -1,6 +1,11 @@
 <?php
+
+=======
 require_once "../config/database.php";
 
+
+require_once __DIR__ . "/../config/database.php";
+require_once "Crud.php";
 class Usuario implements Crud{
     private $conexao;
     private $tabela = 'usuario';
@@ -9,8 +14,15 @@ class Usuario implements Crud{
     public $email;
     public $senha;
     public $cpf;
+
+    public $dataNasc;
     public $livrosEmprestados = [];
     const maxEmprestimo = 3;
+
+
+    public $livrosEmprestados = [];
+    const maxEmprestimo = 3;
+
     
     public function __construct($db){
         $this->conexao = $db;
@@ -18,17 +30,53 @@ class Usuario implements Crud{
 
     public function getIdUsuario($id_usuario){
         $query = "SELECT * FROM {$this->tabela} WHERE id = {$this->id_usuario}";
+
         $resultado = $this->conexao->query($query);
         return $resultado->fetch_all(MYSQLI_ASSOC);
     }
 
+//     // public function emprestar($livro){
+//     //     if(count($this->livrosEmprestados) >= self::maxEmprestimo){
+//     //         return "Limite máximo de empréstimo atingido";
+//     //     }
+//     //     array_push($this->livrosEmprestados, $livro);
+//     // }
+
+//     // public function devolver($livro){
+//     //     if(in_array($livro, $this->livrosEmprestados)){
+//     //         $posicao = array_search($livro, $this->livrosEmprestados);
+//     //         unset($this->livros_emprestados[$posicao]);
+//     //     }else{
+//     //         return "Livro não encontrado";
+//     //     }
+//     // }
+
+
+    public function create(){
+        $query = "INSERT INTO {$this->tabela} (nome, cpf, email, dataNasc, senha) VALUES ('{$this->nome}', '{$this->cpf}', '{$this->email}', '{$this->dataNasc}', '{$this->senha}');";
+
+        $resultado = $this->conexao->query($query);
+        return $resultado->fetch_all(MYSQLI_ASSOC);
+    }
+
+
+    public function read($valor){
+        if($valor == ""){
+            $query = "SELECT * FROM {$this->tabela};";
+        }else{
+            $query = "SELECT * FROM {$this->tabela} WHERE id_usuario = '{$valor}' or nome = '{$valor}' or email = '{$valor}';";
+        }
+
     public function create(){
         $query = "INSERT INTO {$this->tabela} (nome, email, senha, cpf) VALUES ('{$this->nome}', '{$this->email}', '{$this->senha}', '{$this->cpf}');";
+
         $resultado = $this->conexao->query($query);
         return $resultado;
     }
 
+
     public function read($coluna, $valor){}
+
 
     public function update($valores){
         $verificaSeExiste = "SELECT COUNT(*) FROM {$this->tabela} WHERE id = '{$this->id_usuario}';";
@@ -56,10 +104,14 @@ class Usuario implements Crud{
         $resultado = $this->conexao->query($query);
         return $resultado;
     }
-
+    
     public function delete(){
         if(self::maxEmprestimo > 0){
+
+            return "<script>alert('Não foi possivel deletar usuário\nUsuário com emprestimo ativo')</script>";
+
             return "Não foi possivel deletar usuário\nUsuário com emprestimo ativo";
+
         };
 
         $query = "DELETE FROM {$this->tabela} WHERE id_livro = {$this->id_usuario};";

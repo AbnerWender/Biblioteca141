@@ -1,7 +1,6 @@
-@import url(style.css);
+ @import url(style.css);
 
-
-.login-screen{
+.box-cad-usuario{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -9,10 +8,10 @@
     color: aliceblue;
 }
 
-#form-login{
+#form-cadastro{
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 15px;
     padding: 10px 15px;
 
     background: rgba(255, 255, 255, 0.21);
@@ -23,43 +22,12 @@
     border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-#form-login input{
+#form-cadastro input{
     border: 1.2px solid #f3f3f3;
     padding: 6px 12px;
     border-radius: 4px;
-    background-color: transparent;    
-}
-
-#form-login h1{
-    display: flex;
-    justify-content: center;
-    font-size: 35px;
-}
-
-#email{
-    padding: 10px;
-    border: 2px solid #fff;
-    border-radius: 5px;
-    font-size: 16px;
-    color: #fff;
-    outline: none;
-}
-
-#email:focus{
-    border-color: #361211;
-}
-
-#password{
-    padding: 10px;
-    border: 2px solid #fff;
-    border-radius: 5px;
-    font-size: 16px;
-    color: #fff;
-    outline: none;
-}
-
-#password:focus{
-    border-color: #361211;
+    background-color: transparent;
+    color: aliceblue;
 }
 
 input::placeholder{
@@ -67,62 +35,106 @@ input::placeholder{
     font-size: small;
 }
 
-.row{
-    margin: 5px 0;
+#usuario:focus{
+    border-color: #361211;
+}
+
+#cpf:focus{
+    border-color: #361211;
+}
+
+#email:focus{
+    border-color: #361211;
+}
+
+#dtNasc:focus{
+    border-color: #361211;
+}
+
+#senha:focus{
+    border-color: #361211;
+}
+
+#confirma-senha:focus{
+    border-color: #361211;
+}
+
+#form-cadastro h1{
+    display: flex;
+    justify-content: center;
+    font-size: 35px;
+}
+
+.row-75{
+    display: flex;
+    gap: 3%;
+}
+.row-75 div{
+    display: flex;
+    flex-direction: column;
+}
+.row-75 div:first-child{
+    width: 60%;
+}
+
+.row-75 div:last-child{
+    width: 40%;
+}
+
+.row-50{
+    display: flex;
+    gap: 10px;
+}
+
+.row-50 div{
     display: flex;
     flex-direction: column;
 }
 
-#forget-pass a{
-    color: #1d0000;
-    font-size: small;
-    display: flex;
-    justify-content: flex-end;
-    text-decoration: underline;
+.row-50 div:first-child{
+    width: 50%;
 }
 
-#forget-pass a:hover{
-    color: #4e2522;
+.row-50 div:last-child{
+    width: 50%;
 }
 
-#btn-entrar{
+#btn-cadastrar{
     display: flex;
     align-items: center;
     justify-content: center;
     padding-top: 20px;
 }
 
-#btn-entrar button{
-    width: 90px;
+#btn-cadastrar button{
+    width: 120px;
     background-color: #1d0000;
     color: aliceblue;
-    border-radius: 3px;
+    border-radius: 8px;
     border: none;
     padding: 3px 5px;
 }
 
-#btn-entrar p{
+#btn-cadastrar p{
     font-size: 20px;
 }
 
-#btn-entrar button:hover{
+#btn-cadastrar button:hover{
     background-color: #361211;
 }
-
-#faca-cadastro{
+#faca-login{
     font-size: small;
-    margin-top: 10px;
     padding-bottom: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-#faca-cadastro a{
+#faca-login a{
     text-decoration: underline;
     color: #1d0000;
 }
 
-#faca-cadastro a:hover{
+#faca-login a:hover{
     color: #4e2522;
 }
