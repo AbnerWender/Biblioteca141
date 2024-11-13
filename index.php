@@ -1,11 +1,27 @@
 <?php
 
-require_once './controller/LivroController.php';
-require_once("view/src/pages/home.php");
-require_once("view/src/pages/cadastrarLivro.php");
+//codigo professor
+$acao = isset($_GET['acao']) ? $_GET['acao'] : '';
 
+switch($acao){
+    case 'livro':
+        require_once './view/src/pages/listaLivros.php';
+        break;
+    case 'login':
+        require_once './controller/UsuarioController.php';
+        $controller = new UsuarioController();
+        $controller->logarUsuario($_POST['usuario'], $_POST['senha']);
+        break;
+    case 'usuario':
+        require_once './controller/UsuarioController.php';
+        require_once './view/src/cardUsuario.php';
+        break;
+    default:
+        require_once './view/src/pages/login.php';
+}
 
 // Ações para o livro
+/*
 $acaoLivro = isset($_GET['acaoLivro']) ? $_GET['acaoLivro'] : '';
 switch ($acaoLivro) {
     case 'cadastrar': // pega as informações do formulário
@@ -39,5 +55,5 @@ switch ($acaoUsuario) {
 
     default:
         break;
-        
 }
+*/
