@@ -1,13 +1,8 @@
-<!-- Page Cadastro Usuario -->
-<?php 
-include('header.php');
-?>
+<link rel="stylesheet" href=".../css/cadastroUsuario.css">
 
-<link rel="stylesheet" href="../css/cadastroUsuario.css">
- 
 <section class="box-cad-usuario">
 
-    <form action="index.php?acao=cadastrarUsuario" method="post" id="form-cadastro">
+    <form action="index.php?acaoUsuario=cadastrarUsuario" method="post" id="form-cadastro">
         <h1>Cadastrar Usuário</h1>
 
         <div class="row-75">
@@ -34,7 +29,7 @@ include('header.php');
             <div>
                 <input type="password" name="senha" id="senha" placeholder="Senha *">
             </div>
-            
+
             <div>
                 <input type="password" name="senha" id="confirma-senha" placeholder="Confirmar Senha *">
             </div>
