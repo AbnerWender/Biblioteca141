@@ -38,7 +38,7 @@ class Livro {
         }
 
 
-        $query = "INSERT INTO {$this->tabela} (titulo, autor, genero) VALUES ('{$this->titulo}', '{$this->autor}', '{$this->genero}');";
+        $query = "INSERT INTO {$this->tabela} (titulo, autor, genero, isbn, esta_disponivel) VALUES ('{$this->titulo}', '{$this->autor}', '{$this->genero}', '{$this->isbn}', '{$this->estaDisponivel}');";
         $resultado = $this->conexao->query($query);
         return $resultado;
     }
