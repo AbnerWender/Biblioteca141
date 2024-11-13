@@ -1,10 +1,8 @@
 <?php
-require_once ('C:/xampp/htdocs/Biblioteca141/view/src/header.php');
+require_once ('view/src/pages/header.php');
+
+
+
+require_once ("view/src/pages/footer.php");
+
 ?>
-
-
-
-</body>
-</html>
-<?php
-require_once ("C:/xampp/htdocs/Biblioteca141/view/src/footer.php");

@@ -1,3 +1,5 @@
+@import url(style.css);
+
 .adm-content {
   display: flex;
   flex-direction: row;

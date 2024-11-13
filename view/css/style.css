@@ -4,7 +4,7 @@
 
 
 body{
-    /* background-image: url('../imagens/bibliotecaWpp.jpg'); */
+    background-image: url('../imagens/bibliotecaWpp.jpg');
     background-size: cover; 
 }
 section {
@@ -12,6 +12,11 @@ section {
     width: 100%;
     display: flex;
     align-content: center;
+
+    font-family: "Inter", serif;
+    font-optical-sizing: auto;
+    font-weight: 100;
+    font-style: normal;
 }
 
-@import url("../src/footer.php");
+@import url("view/templates/footer.php");

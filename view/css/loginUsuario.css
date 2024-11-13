@@ -1,6 +1,5 @@
 @import url(style.css);
 
-
 .login-screen{
     display: flex;
     align-items: center;
@@ -74,7 +73,7 @@ input::placeholder{
 }
 
 #forget-pass a{
-    color: #1d0000;
+    color: #000000;
     font-size: small;
     display: flex;
     justify-content: flex-end;
