@@ -14,12 +14,12 @@
             <img src="../../imagens/AdmIcon.png" alt="Adm_Icon" class="adm-card-img">
 
             <div class="informacoes">
-                <h2 class="adm-card-titulo">Nome:</h2>
-                <p class="adm-card-texto"><!--<?= $adm['nome'] ?>--></p>
-                <h2 class="adm-card-titulo">Email:</h2>
-                <p class="adm-card-texto"><!--<?= $adm['email'] ?>--></p>
-                <h2 class="adm-card-titulo">Cpf:</h2>
-                <p class="adm-card-texto"><!--<?= $adm['cpf'] ?>--></p>
+                <h2 class="adm-card-titulo">Nome: <p style="color: black;display:contents;">Jorginho</p></h2>
+                
+                <h2 class="adm-card-titulo">Email: <p style="color: black;display:contents;">jorginhogameplays@gmail.com</p></h2>
+                
+                <h2 class="adm-card-titulo">Cpf: <p style="color: black;display:contents;">123.456.789-10</p></h2>
+                
             </div>
 
             <?php
