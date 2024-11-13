@@ -1,8 +1,8 @@
-<link rel="stylesheet" href="../../css/loginUsuario.css">
+<link rel="stylesheet" href="view/css/loginUsuario.css">
 
 <section class="login-screen">
 
-    <form action="index.php?acao=loginUsuario" id="form-login">
+    <form action="index.php?acao=login" id="form-login" method="post">
         <h1>Login</h1>
         <div class="row">
             <label for="email">Email</label>
@@ -23,7 +23,7 @@
                 <p>Entrar</p>
             </button>
         </div>
-        <p id="faca-cadastro">Não possue login? <a href="./view/src/cadastroUsuario.php" id="btn-registro">Faça Cadastro</a></p>
+        <p id="faca-cadastro">Não possue login? <a href="index.php?acao=usuario" id="btn-registro">Faça Cadastro</a></p>
     </form>
 </section>
 </section>

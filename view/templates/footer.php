@@ -1,6 +1,12 @@
-<!-- Footer -->
+<html>
 
-<style>
+    <style>
+    
+    .footer {
+        bottom: 0;
+        position: relative;
+        width: 100%;    
+    }
     .footer-header {
         background-color: black;
         color: white;
@@ -20,12 +26,6 @@
         padding: 15px;
         width: 30%;
         text-align: center;
-    }
-
-    .footer {
-        bottom: 0;
-        position: absolute;
-        width: 100%;
     }
 </style>
 

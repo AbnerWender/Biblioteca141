@@ -1,8 +1,8 @@
-<link rel="stylesheet" href=".../css/cadastroUsuario.css">
+<link rel="stylesheet" href="view/css/cadastroUsuario.css">
 
 <section class="box-cad-usuario">
 
-    <form action="index.php?acaoUsuario=cadastrarUsuario" method="post" id="form-cadastro">
+    <form action="index.php?acao=usuario" method="post" id="form-cadastro">
         <h1>Cadastrar Usuário</h1>
 
         <div class="row-75">
@@ -36,7 +36,7 @@
         </div>
 
         <div id="btn-cadastrar">
-            <button href="../src/home.php" id="btn-cadastrar" type="submit">
+            <button href="home.php" id="btn-cadastrar" type="submit">
                 <p>Cadastrar</p>
             </button>
         </div>
