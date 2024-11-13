@@ -119,8 +119,8 @@
         </nav>
 
         <div class="img-perfil">
-            <a href="index.php?acaoUsuario=login">
-                <img src="../imagens/perfilIMG.png" alt="perfil" width="50px" height="50px">
+            <a href="../../../index.php?acaoUsuario=login">
+                <img src="../../imagens/perfilIMG.png" alt="perfil" width="50px" height="50px">
             </a>
         </div>
     </header>
