@@ -1,6 +1,6 @@
 <h3>Cadastrar Livro</h3>
 
-<form action="index.php?acaoLivro=cadastrar" method="POST">
+<form action="../../../index.php?acaoLivro=cadastrar" method="POST">
     <label for="titulo">Titulo: </label>
     <input type="text" name="titulo" id="titulo" required>
 

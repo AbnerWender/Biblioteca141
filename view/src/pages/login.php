@@ -1,7 +1,7 @@
 <?php
 
-include 'view/src/pages/login.php';
-include 'view/src/templates/forms/formLogin.php';
-include 'view/src/templates/footer.php';
+include '../../src/../templates/header.php';
+include '../../src/../templates/forms/formLogin.php';
+include '../../src/../templates/footer.php';
 
 ?>

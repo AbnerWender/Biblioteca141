@@ -1,5 +1,5 @@
 <?php
-require_once ("C:/xampp/htdocs/Biblioteca141/controller/LivroController.php");
-require_once ('C:/xampp/htdocs/Biblioteca141/view/src/header.php');
-require_once ('C:/xampp/htdocs/Biblioteca141/view/template/formCadastrarLivro.php');
+include '../../src/../templates/header.php';
+include '../../../controller/LivroController.php';
+include '../../templates/forms/formCadastrarLivro.php';
 
