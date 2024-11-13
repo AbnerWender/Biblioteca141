@@ -31,17 +31,3 @@ Este projeto visa desenvolver um sistema de gerenciamento de biblioteca em PHP u
 * **Livro:** Detalhes do livro. Opção para empréstimo.
 * **Usuário:** Informações pessoais do usuário. Histórico de empréstimos.
 * **Admin:** Painel administrativo para gerenciar usuários, livros e empréstimos.
-
-**Observações:**
-
-* Este diagrama é uma sugestão e pode ser adaptado de acordo com a implementação.
-* Outras classes podem ser necessárias para representar elementos como categorias de livros, notificações, etc.
-* A implementação das funcionalidades deve levar em consideração a segurança da aplicação, como a proteção contra injeção de SQL e XSS.
-
-### Próximos Passos
-
-* **Design detalhado:** Criação de diagramas de sequência e UML para detalhar as interações entre as classes e os componentes do sistema.
-* **Implementação:** Desenvolvimento do código em PHP, utilizando um framework como Laravel ou Symfony para agilizar o processo.
-* **Banco de dados:** Criação do banco de dados e definição das tabelas para armazenar as informações dos livros, usuários e empréstimos.
-* **Interface do usuário:** Desenvolvimento da interface web utilizando HTML, CSS e JavaScript.
-* **Testes:** Realização de testes unitários e de integração para garantir a qualidade do sistema.
